@@ -4,6 +4,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  /* outline: 1px solid red; */
 }
 
 html,
@@ -21,45 +22,99 @@ body {
   justify-content: center;
   align-items: center;
 }
-#dropdown-container{
-  position: relative;
-}
-#dropdown-button{
-  font-family: 'Merienda';
-  padding: 14px;
-  border-radius: 12px;
-  background-color: chocolate;
-   box-shadow: 4px 4px 8px #888888;
-  font-size: 1.1rem;
-  color: aliceblue;
+form{
   border: none;
-  margin: 10px;
-}
-#dropdown-button:hover{
-  background-color: #C04000;
-  cursor: pointer;
-}
-#dropdown-content{
-  display: none;
-  position: absolute;
-  min-width: 140px;
-  background-color: whitesmoke;
-  padding: 8px;
-  border-radius: 8px;
-  color: black;
-  box-shadow: 5px 5px 8px #888888;
-}
-#dropdown-content a{
-  display: block;
-  text-decoration: none;
-  color: black;
-  padding: 5px;
-}
-#dropdown-content a:hover{
-  background-color: #D3D3D3;
   border-radius: 10px;
-   box-shadow: 2px 2px 5px #888888;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-#dropdown-content.show{
-  display: block;
+form .heading{
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: center;
+  color:darkmagenta;
+  font-family: 'Merienda';
+  font-weight: bolder;
+  margin-bottom: 20px;
+   
+}
+form p {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+form label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+form input,
+select#user-country {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: 'Merienda';
+}
+form button {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #6a0dad;
+    color: white;
+    font-size: 1rem;
+     font-family: 'Poppins';
+  }
+  
+  form button:hover {
+    background-color: #8a2be2;
+  }
+
+/* input[type="email"] {
+  appearance: none;
+
+  width: 100%;
+  border: 1px solid #333;
+  margin: 0;
+
+  font-family: 'Merienda';
+  font-size: 90%;
+
+  box-sizing: border-box;
+} */
+
+/* invalid fields */
+input:invalid {
+  border-color: #900;
+  background-color: #fdd;
+}
+
+input:focus:invalid {
+  outline: none;
+}
+
+/* error message styles */
+.email-error {
+  width: 100%;
+  padding: 0;
+  font-size: 80%;
+  color: white;
+  background-color: #900;
+  border-radius: 0 0 5px 5px;
+  box-sizing: border-box;
+  
+}
+
+.email-error.active {
+  padding: 0.3em;
 }
