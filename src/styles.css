@@ -14,15 +14,15 @@ body {
 }
 
 body {
-  font-family: 'Lumanosimo';
-  background-color:antiquewhite;
+  font-family: "Lumanosimo";
+  background-color: antiquewhite;
   padding: 0;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-form{
+form {
   border: none;
   border-radius: 10px;
   padding: 20px;
@@ -34,15 +34,14 @@ form{
   flex-direction: column;
   gap: 10px;
 }
-form .heading{
+form .heading {
   font-size: 1.8rem;
   display: flex;
   justify-content: center;
-  color:darkmagenta;
-  font-family: 'Merienda';
+  color: darkmagenta;
+  font-family: "Merienda";
   font-weight: bolder;
   margin-bottom: 20px;
-   
 }
 form p {
   display: flex;
@@ -57,43 +56,29 @@ form label {
 }
 form input,
 select#user-country {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-family: 'Merienda';
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: "Merienda";
 }
 form button {
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #6a0dad;
-    color: white;
-    font-size: 1rem;
-     font-family: 'Poppins';
-  }
-  
-  form button:hover {
-    background-color: #8a2be2;
-  }
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #6a0dad;
+  color: white;
+  font-size: 1rem;
+  font-family: "Poppins";
+}
 
-/* input[type="email"] {
-  appearance: none;
+form button:hover {
+  background-color: #8a2be2;
+}
 
-  width: 100%;
-  border: 1px solid #333;
-  margin: 0;
-
-  font-family: 'Merienda';
-  font-size: 90%;
-
-  box-sizing: border-box;
-} */
-
-/* invalid fields */
 input:invalid {
   border-color: #900;
   background-color: #fdd;
@@ -102,9 +87,8 @@ input:invalid {
 input:focus:invalid {
   outline: none;
 }
-
-/* error message styles */
-.email-error {
+.email-error,
+.postal-code-error {
   width: 100%;
   padding: 0;
   font-size: 80%;
@@ -112,9 +96,9 @@ input:focus:invalid {
   background-color: #900;
   border-radius: 0 0 5px 5px;
   box-sizing: border-box;
-  
 }
 
-.email-error.active {
+.email-error.active,
+.postal-code-error.active {
   padding: 0.3em;
 }
