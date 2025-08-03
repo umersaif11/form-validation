@@ -2,6 +2,9 @@
 import "./styles.css";
 import {constraints} from "./postal-codes.js"
 
+const passwordError = document.querySelector(".password-error");
+const password = document.getElementById("user-password");
+
 const postalError = document.querySelector(".postal-code-error");
 const country = document.getElementById("user-country");
 const postalCodeField = document.getElementById("user-postal-code");
@@ -50,6 +53,17 @@ form.addEventListener("submit", (event) => {
         event.preventDefault();
      }
 })
+password.addEventListener("input", () => {
+    validatePassword();
+})
+form.addEventListener("submit", (event) => {
+    if(password.validity.patternMismatch || 
+        password.validity.valueMissing
+    ){
+        validatePassword();
+        event.preventDefault();
+    }
+})
 
 function showError() {
   if (email.validity.valueMissing) {
@@ -69,4 +83,32 @@ function checkPostalCode(){
         postalError.textContent = `${constraints[country.value][1]}`;
     }
     postalError.className = "postal-code-error active";
+}
+function validatePassword() {
+    const minLength = 8;
+    const hasUppercase = /[A-Z]/.test(password.value);
+    const hasLowercase = /[a-z]/.test(password.value);
+    const hasNumber = /[0-9]/.test(password.value);
+    const hasSpecialChar = /[^A-Za-z0-9]/.test(password.value); // Or customize this regex
+
+    if (password.value.length < minLength) {
+        passwordError.textContent = "Password must be at least " + minLength + " characters long.";
+        passwordError.className = "password-error active"
+    } else if (!hasUppercase) {
+        passwordError.textContent = "Password must contain at least one uppercase letter.";
+        passwordError.className = "password-error active"
+    } else if (!hasLowercase) {
+        passwordError.textContent = "Password must contain at least one lowercase letter.";
+        passwordError.className = "password-error active"
+    } else if (!hasNumber) {
+        passwordError.textContent = "Password must contain at least one number.";
+        passwordError.className = "password-error active"
+    } else if (!hasSpecialChar) {
+        passwordError.textContent = "Password must contain at least one special character.";
+        passwordError.className = "password-error active"
+    } else {
+        passwordError.textContent = "";
+        passwordError.className = "password-error"
+    }
+    
 }
