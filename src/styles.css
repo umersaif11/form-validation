@@ -9,15 +9,13 @@
 
 html,
 body {
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
 }
 
 body {
   font-family: "Lumanosimo";
   background-color: antiquewhite;
-  padding: 0;
-  position: relative;
+  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,7 +76,6 @@ form button {
 form button:hover {
   background-color: #8a2be2;
 }
-
 input:invalid {
   border-color: #900;
   background-color: #fdd;
@@ -88,7 +85,8 @@ input:focus:invalid {
   outline: none;
 }
 .email-error,
-.postal-code-error {
+.postal-code-error,
+.password-error {
   width: 100%;
   padding: 0;
   font-size: 80%;
@@ -99,6 +97,7 @@ input:focus:invalid {
 }
 
 .email-error.active,
-.postal-code-error.active {
+.postal-code-error.active,
+.password-error.active{
   padding: 0.3em;
 }
