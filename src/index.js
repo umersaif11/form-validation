@@ -2,17 +2,20 @@
 import "./styles.css";
 import {constraints} from "./postal-codes.js"
 
-const passwordError = document.querySelector(".password-error");
-const password = document.getElementById("user-password");
+const form = document.querySelector("form");
+const email = document.getElementById("user-email");
+const emailError = document.querySelector("#user-email + span.email-error");
 
 const postalError = document.querySelector(".postal-code-error");
 const country = document.getElementById("user-country");
 const postalCodeField = document.getElementById("user-postal-code");
 const constraint = new RegExp(constraints[country.value][0], "");
 
-const form = document.querySelector("form");
-const email = document.getElementById("user-email");
-const emailError = document.querySelector("#user-email + span.email-error");
+const passwordError = document.querySelector(".password-error");
+const password = document.getElementById("user-password");
+
+const confirmationError = document.querySelector(".confirmation-password-error");
+const confirmation = document.getElementById("confirm-user-password");
 
 email.addEventListener("input", () => {
   if (email.validity.valid) {
@@ -61,6 +64,22 @@ form.addEventListener("submit", (event) => {
         password.validity.valueMissing
     ){
         validatePassword();
+        event.preventDefault();
+    }
+})
+confirmation.addEventListener("input", () => {
+    if(confirmation.value === password.value){
+        confirmationError.textContent = "";
+        confirmationError.className = "confirmation-password-error"
+    } else {
+        confirmationError.textContent = "Please type exact password as above";
+        confirmationError.className = "confirmation-password-error active";
+    }
+})
+form.addEventListener("submit", (event) => {
+    if(confirmation.value !== password.value){
+        confirmationError.textContent = "Please type exact password as above";
+        confirmationError.className = "confirmation-password-error active";
         event.preventDefault();
     }
 })
