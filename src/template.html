@@ -323,6 +323,26 @@
         />
         <span class="postal-code-error" aria-live="polite"></span>
       </p>
+      <p>
+        <label for="user-password">Password: </label>
+        <input 
+        type="password"
+        id="user-password"
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$"
+        placeholder="e.g. aCmQ*&-@2975"
+        required
+        />
+        <span class="password-error" aria-live="polite"></span>
+      </p>
+      <p>
+        <label for="confirm-user-password">Confirm Password: </label>
+        <input 
+        type="password"
+        id="confirm-user-password"
+        placeholder="Put exact password as above"
+        required
+        />
+      </p>
       <button>Submit</button>
     </form>
   </body>
