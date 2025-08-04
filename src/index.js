@@ -2,6 +2,8 @@
 import "./styles.css";
 import {constraints} from "./postal-codes.js"
 
+const showPassOne = document.getElementById("show-pass");
+const showPassTwo = document.getElementById("show-pass-two");
 const form = document.querySelector("form");
 const email = document.getElementById("user-email");
 const emailError = document.querySelector("#user-email + span.email-error");
@@ -70,18 +72,27 @@ form.addEventListener("submit", (event) => {
 confirmation.addEventListener("input", () => {
     if(confirmation.value === password.value){
         confirmationError.textContent = "";
-        confirmationError.className = "confirmation-password-error"
+        confirmationError.className = "confirmation-password-error";
+        confirmation.className = "";
     } else {
         confirmationError.textContent = "Please type exact password as above";
         confirmationError.className = "confirmation-password-error active";
+        confirmation.className = "error";
     }
 })
 form.addEventListener("submit", (event) => {
     if(confirmation.value !== password.value){
         confirmationError.textContent = "Please type exact password as above";
         confirmationError.className = "confirmation-password-error active";
+        confirmation.className = "error";
         event.preventDefault();
     }
+})
+showPassOne.addEventListener("click", () => {
+    toggleVisibility(password);
+})
+showPassTwo.addEventListener("click", () => {
+    toggleVisibility(confirmation);
 })
 
 function showError() {
@@ -110,10 +121,7 @@ function validatePassword() {
     const hasNumber = /[0-9]/.test(password.value);
     const hasSpecialChar = /[^A-Za-z0-9]/.test(password.value); // Or customize this regex
 
-    if (password.value.length < minLength) {
-        passwordError.textContent = "Password must be at least " + minLength + " characters long.";
-        passwordError.className = "password-error active"
-    } else if (!hasUppercase) {
+    if (!hasUppercase) {
         passwordError.textContent = "Password must contain at least one uppercase letter.";
         passwordError.className = "password-error active"
     } else if (!hasLowercase) {
@@ -125,9 +133,19 @@ function validatePassword() {
     } else if (!hasSpecialChar) {
         passwordError.textContent = "Password must contain at least one special character.";
         passwordError.className = "password-error active"
+    } else if (password.value.length < minLength) {
+        passwordError.textContent = "Password must be at least " + minLength + " characters long.";
+        passwordError.className = "password-error active"
     } else {
         passwordError.textContent = "";
         passwordError.className = "password-error"
     }
     
+}
+function toggleVisibility(input){
+    if(input.type === "password"){
+        input.type = "text";
+    } else {
+        input.type = "password";
+    }
 }
